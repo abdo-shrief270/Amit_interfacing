@@ -29,16 +29,19 @@ void LCD_vidInit()
     DIO_vidSetPinMode(LCD_RS_PORT,LCD_RS_PIN,OUTPUT);
     DIO_vidSetPinMode(LCD_RW_PORT,LCD_RW_PIN,OUTPUT);
     DIO_vidSetPinMode(LCD_EN_PORT,LCD_EN_PIN,OUTPUT);
+	 LCD_vidSendCmd(LCD_RETURN_HOME);
+	 _delay_ms(50);
+	 LCD_vidSendCmd(LCD_FUNCTION_8BIT_2LINES);
     #elif LCD_MODE  ==  0
     DIO_vidSetNibbleMode(LCD_DATA_PORT,LCD_NIBBLE_MODE,OUTPUT);
     DIO_vidSetPinMode(LCD_RS_PORT,LCD_RS_PIN,OUTPUT);
     DIO_vidSetPinMode(LCD_RW_PORT,LCD_RW_PIN,OUTPUT);
     DIO_vidSetPinMode(LCD_EN_PORT,LCD_EN_PIN,OUTPUT);
+	 LCD_vidSendCmd(LCD_RETURN_HOME);
+	 _delay_ms(50);
+	 LCD_vidSendCmd(LCD_FUNCTION_4BIT_2LINES);
     #endif
-
     // Delay 50 ms To Send The Commands To LCD
-    _delay_ms(50); 
-    LCD_vidSendCmd(LCD_FUNCTION_8BIT_2LINES);
     _delay_ms(2);
     LCD_vidSendCmd(LCD_DISP_ON_CURSOR_ON);
     _delay_ms(2);
@@ -66,7 +69,9 @@ void LCD_vidSendCmd(_enuLcdCmd enuCmd)
     #if LCD_MODE    == 1
     DIO_vidWritePort(LCD_DATA_PORT,enuCmd);
     #elif LCD_MODE  ==  0
-    DIO_vidWriteNibble(LCD_DATA_PORT,LCD_NIBBLE_MODE,enuCmd);
+    DIO_vidWriteNibble(LCD_DATA_PORT,LCD_NIBBLE_MODE,(LCD_NIBBLE_MODE==HIGHNIBBLE)?enuCmd:enuCmd>>4);
+	LCD_vidSendEnPulse();
+    DIO_vidWriteNibble(LCD_DATA_PORT,LCD_NIBBLE_MODE,(LCD_NIBBLE_MODE==HIGHNIBBLE)?enuCmd<<4:enuCmd);
     #endif
     LCD_vidSendEnPulse(LCD_EN_PORT,LCD_EN_PIN);
 }
@@ -102,15 +107,15 @@ Return Value : NULL
 
 void LCD_vidSendChar(u8 u8Char)
 {
-    DIO_vidWritePin(LCD_RS_PORT,LCD_RS_PIN,HIGH);
-
+	DIO_vidWritePin(LCD_RS_PORT,LCD_RS_PIN,HIGH);
 	#if LCD_MODE    == 1
-    DIO_vidWritePort(LCD_DATA_PORT,u8Char);
-    #elif LCD_MODE  ==  0
-    DIO_vidWriteNibble(LCD_DATA_PORT,LCD_NIBBLE_MODE,u8Char);
-    #endif
-
-    LCD_vidSendEnPulse(LCD_EN_PORT,LCD_EN_PIN);
+	DIO_vidWritePort(LCD_DATA_PORT,u8Char);
+	#elif LCD_MODE  ==  0
+    DIO_vidWriteNibble(LCD_DATA_PORT,LCD_NIBBLE_MODE,(LCD_NIBBLE_MODE==HIGHNIBBLE)?u8Char:u8Char>>4);
+    LCD_vidSendEnPulse();
+    DIO_vidWriteNibble(LCD_DATA_PORT,LCD_NIBBLE_MODE,(LCD_NIBBLE_MODE==HIGHNIBBLE)?u8Char<<4:u8Char);
+	#endif
+	LCD_vidSendEnPulse(LCD_EN_PORT,LCD_EN_PIN);
 }
 
 /*
