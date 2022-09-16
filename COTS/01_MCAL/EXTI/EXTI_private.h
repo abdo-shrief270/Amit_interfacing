@@ -1,6 +1,6 @@
 #ifndef  _MCAL_EXTI_PRIVATE_H_
     #define _MCAL_EXTI_PRIVATE_H_
-
+#include "DIO_interface.h"
 
 	// Interrupt Registers
 
