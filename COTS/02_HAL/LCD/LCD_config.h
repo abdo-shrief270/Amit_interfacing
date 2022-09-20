@@ -12,7 +12,7 @@
     This Macro used to define the Mode number of Nibble 
     LOWNIBBLE for LOW Nibble mode ,  HIGHNIBBLE for HIGH Nibble mode
 */
-#define LCD_NIBBLE_MODE     HIGHNIBBLE
+#define LCD_NIBBLE_MODE     LOWNIBBLE
 
 
 /*
@@ -48,25 +48,25 @@
 
 
 // This Macro used to define the port number of RS pin 
-#define LCD_RS_PORT         GPIOB
+#define LCD_RS_PORT         GPIOA
 // This Macro used to define the PIN number of RS
-#define LCD_RS_PIN          PIN1
+#define LCD_RS_PIN          PIN5
 
 
 
 
 
 // This Macro used to define the port number of RW pin 
-#define LCD_RW_PORT         GPIOB
+#define LCD_RW_PORT         GPIOA
 // This Macro used to define the PIN number of RW
 #define LCD_RW_PIN          PIN2
 
 
 
 // This Macro used to define the port number of enable pin 
-#define LCD_EN_PORT         GPIOB
+#define LCD_EN_PORT         GPIOA
 // This Macro used to define the PIN number of Enable
-#define LCD_EN_PIN          PIN3
+#define LCD_EN_PIN          PIN6
 
 
 

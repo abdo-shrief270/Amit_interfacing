@@ -49,4 +49,6 @@ void LCD_vidSendNumber(u32 u32Num);
 // This Function Used to Print Float , Negative and positive numbers on LCD MC
 void LCD_vidWriteRealNumber(float f32Num);
 
+// This Function Used to Move Cursor Of LCD
+void LCD_vidMoveCursor(u8 u8Line, u8 u8Position);
 #endif

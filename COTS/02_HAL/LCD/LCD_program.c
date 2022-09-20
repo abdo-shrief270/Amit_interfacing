@@ -47,8 +47,8 @@ void LCD_vidInit()
     _delay_ms(2);
     LCD_vidSendCmd(LCD_CLEAR_SCREEN);
     _delay_ms(2);
-    LCD_vidSendCmd(LCD_SHIFT_CURSOR_RIGHT);
-    _delay_ms(2);
+	LCD_vidSendCmd(LCD_SHIFT_CURSOR_POS_LEFT);
+	_delay_ms(2);
 
 }
 
@@ -88,9 +88,9 @@ Return Value : NULL
 */
 static void LCD_vidSendEnPulse()
 {
-    DIO_vidWritePin(LCD_EN_PORT,LCD_EN_PIN,LOW);
-    _delay_ms(10);
     DIO_vidWritePin(LCD_EN_PORT,LCD_EN_PIN,HIGH);
+    _delay_ms(10);
+    DIO_vidWritePin(LCD_EN_PORT,LCD_EN_PIN,LOW);
 }
 
 
@@ -176,4 +176,34 @@ void LCD_vidWriteRealNumber(float f32Num)
 		LCD_vidSendString(".");
 		LCD_vidSendNumber(num);
 	}
+}
+
+
+/*
+USING: Change Position of the cursor
+
+Parameters : 1_ u8Line ->>> line number 2_ u8Position ->>> position number
+
+Return type : void
+
+Return Value : NULL
+*/
+
+
+void LCD_vidMoveCursor(u8 u8Line, u8 u8Position)
+{
+	if(u8Line < 1 || u8Line > 2 || u8Position < 1 ||u8Position > 16)
+	{
+        LCD_voidSendCmd(0x80);
+	}
+	else if(u8Line == 1)
+	{
+        LCD_voidSendCmd(0x80 +(u8Position - 1));
+	}
+	else if(u8Line == 2)
+	{
+        LCD_voidSendCmd(LCD_voidSendCmd(data););
+	}
+	
+	_delay_ms(1);
 }
