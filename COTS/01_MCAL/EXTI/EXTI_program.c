@@ -3,6 +3,7 @@
 #include "EXTI_interface.h"
 #include "EXTI_private.h"
 #include "EXTI_config.h"
+#include "avr/interrupt.h"
 
 void (* CBInt0)(void);
 void (* CBInt1)(void);
