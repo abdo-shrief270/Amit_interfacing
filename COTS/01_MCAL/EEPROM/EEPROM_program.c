@@ -23,12 +23,13 @@ Using Switch case for the port number in parameters we can know the port number 
 
 void EEPROM_vidWrite(u16 u16Address , u8 u8Data)
 {
-    u16Address &=0X03FF;
-    EEARL   = (u8) u16Address; 
+	u16Address &=0x03FF;
     EEARL   = (u8) (u16Address>>8); 
+    EEARH   = (u8) u16Address; 
     EEDR    = u8Data;
-    EECR   |= (3<<1);
-    while(GET_BIT(EECR,EEWE)==1);
+	SET_BIT(EECR, EEMWE);
+	SET_BIT(EECR, EEWE);
+    while(GET_BIT(EECR,EEWE));
 }
 
 
@@ -50,8 +51,8 @@ Using Switch case for the port number in parameters we can know the port number 
 u8 EEPROM_vidRead(u16 u16Address)
 {
     u16Address &=0X03FF;
-    EEARL = (u8)u16Address;
-	EEARH = (u8)(u16Address >> 8);
+    EEARL = (u8) (u16Address >> 8);
+	EEARH = (u8) u16Address ;
 	SET_BIT(EECR, EERE);
 	return EEDR;
 }
