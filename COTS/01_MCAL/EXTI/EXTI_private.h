@@ -48,7 +48,7 @@
 
 
 		/*
-			Interrupts Flag Pins used to Enable the Interrupt when it is HIGH
+			Interrupts Pins used to Enable the Interrupt when it is HIGH
 			Located in GICR
 		*/
 

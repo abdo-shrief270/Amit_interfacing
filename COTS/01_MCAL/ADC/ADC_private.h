@@ -2,6 +2,24 @@
     #define _MCAL_ADC_PRIVATE_H_
 
 
+
+/* @Steps of Init ADC 
+ 
+	    1- Make Channel selected I/p 
+	    2- Select Conversion Speed of ADC
+	    3- Select Voltage reference for ADC 
+	    4- Select Type of Storing of the output
+	    5- Turn on ADC
+ */
+
+/* @Steps of Reading from ADC 
+
+		1- Activate Start of Conversion 
+		2- Wait until conversion Ended
+		3- Clear Interrupt Flag after Ended 
+		4- Read ADCL then ADCH in order 
+*/
+
 //  ADC Registers
 
 #define ADMUX    (*(volatile u8*)0x27)
