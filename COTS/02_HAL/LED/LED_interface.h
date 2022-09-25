@@ -6,5 +6,6 @@
 void LED_vidInit(_enuGPIOx enuPortNum, _enuPinx enuPinNum);
 void LED_vidLedOn(_enuGPIOx enuPortNum, _enuPinx enuPinNum);
 void LED_vidLedOff(_enuGPIOx enuPortNum, _enuPinx enuPinNum);
+void LED_vidLedToggle(_enuGPIOx enuPortNum, _enuPinx enuPinNum);
 
 #endif
