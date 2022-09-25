@@ -1,0 +1,82 @@
+#ifndef _MCAL_TIM2_CONFIG_H_
+    #define _MCAL_TIM2_CONFIG_H_
+/*
+Options of TIM2_MODE :
+    0 => NORMAL MODE
+    1 => PHASE PWM MODE
+    2 => CTC MODE
+    3 => FAST PWM MODE
+    4 => NON-PWM MODE
+*/
+
+#define TIM2_MODE   3 
+
+
+/*
+Options of TIM2_COM_NONPWM :
+        0X00 => NORMAL PORT OPERATION
+        0X10 => TOGGLE OC2 ON COMPARE MATCH
+        0X20 => CLEAR OC2 ON COMPARE MATCH
+        0X30 => SET OC2 ON COMPARE MATCH
+       
+*/
+
+#define TIM2_COM_NONPWM   0X00 
+
+/*
+Options of TIM2_COM_FASTPWM :
+        0X00 => NORMAL PORT OPERATION
+        0X20 => CLEAR OC2 ON COMPARE MATCH AND SET ON BOTTOM
+        0X30 => SET OC2 ON COMPARE MATCH AND CLEAR ON BOTTOM
+       
+*/
+#define TIM2_COM_FASTPWM   0X30 
+
+
+/*
+Options of TIM2_COM_PCPWM :
+        0X00 => NORMAL PORT OPERATION
+        0X20 => CLEAR OC2 ON COMPARE MATCH ON UPCOUNT AND SET ON COMPARE MATCH ON DOWNCOUNT
+        0X30 => SET OC2 ON COMPARE MATCH ON UPCOUNT AND CLEAR ON COMPARE MATCH ON DOWNCOUNT
+       
+*/
+#define TIM2_COM_PCPWM   0X00 
+
+
+
+/*
+Options of TIM2_COM_NONPWM :
+        0 => DISABLE FOC2
+        1 => ENABLE FOC2
+       
+*/
+#define TIM2_FOC2 0
+
+
+
+/*
+Options of TIM2_COM_NONPWM :
+        0 => DISABLE OVERFLOW INTERRUPT
+        1 => ENABLE OVERFLOW INTERRUPT
+       
+*/
+#define TIM2_TOVINT 0
+
+/*
+Options of TIM2_COM_NONPWM :
+        0 => DISABLE COMAPRE MATCH INTERRUPT
+        1 => ENABLE COMAPRE MATCH INTERRUPT
+       
+*/
+#define TIM2_TOCINT 0
+
+
+/* 
+Options of TMR2_TRCCONTROL:
+        0 => Disable RTC
+	1 => Enable  RTC
+*/
+#define TMR2_TRCCTRL  0
+
+
+#endif
