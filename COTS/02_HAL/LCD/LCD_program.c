@@ -194,15 +194,15 @@ void LCD_vidMoveCursor(u8 u8Line, u8 u8Position)
 {
 	if(u8Line < 1 || u8Line > 2 || u8Position < 1 ||u8Position > 16)
 	{
-        LCD_voidSendCmd(0x80);
+        LCD_vidSendCmd(0x80);
 	}
 	else if(u8Line == 1)
 	{
-        LCD_voidSendCmd(0x80 +(u8Position - 1));
+        LCD_vidSendCmd(0x80 +(u8Position - 1));
 	}
 	else if(u8Line == 2)
 	{
-        LCD_voidSendCmd(LCD_voidSendCmd(data););
+        LCD_vidSendCmd(0xC0 +(u8Position - 1));
 	}
 	
 	_delay_ms(1);

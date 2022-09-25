@@ -6,9 +6,9 @@
 #include "TIM0_config.h"
 #include "avr/interrupt.h"
 
-u8 flag1=0;
-u8 flag2=0;
-u8 TOV_counter=0;
+u8 flag01=0;
+u8 flag02=0;
+u8 TOV0_counter=0;
 
 void (*CBCTC)(void);
 void (*CBTOV)(void);
@@ -74,9 +74,9 @@ void TIM0_vidInit(void){
 
 void  TIM0_vidStart(u8 u8Prescaler){
 
-    flag1=0;
-    flag2=0;
-    TOV_counter=0;
+    flag01=0;
+    flag02=0;
+    TOV0_counter=0;
 	TCCR0 &= 0xF8;
 	TCCR0 |=u8Prescaler;
 }
@@ -92,7 +92,7 @@ void  TIM0_vidSetTCNT0(u8 u8InitValue){
 u32   TIM0_u32ReadTIM0(void){
 
     u32 Return_Val;
-	Return_Val = (TOV_counter * 256)+ TCNT0;
+	Return_Val = (TOV0_counter * 256)+ TCNT0;
 	return Return_Val;
 
 }
@@ -102,7 +102,7 @@ void  TIM0_vidSetNormalWithInterrupt(void (*CB)(void)){
 
     if(CB != 0)
 	{
-		flag1 =1;
+		flag01 =1;
 		CBTOV = CB;
 	}
 
@@ -120,7 +120,7 @@ void  TIM0_vidSetCTCWithInterrupt(void (*CB)(void)){
 
     if(CB != 0)
 	{
-		flag2 =1;
+		flag02 =1;
 		CBCTC = CB;
 	}
 
@@ -176,8 +176,8 @@ void TIM0_GeneratePhaseCorrectPWM(u8 u8DutyCycle){
 
 ISR(TIMER0_OVF_vect)
 {
-	TOV_counter++;
-	if(flag1 !=0)
+	TOV0_counter++;
+	if(flag01 !=0)
 	{
 		(*CBTOV)();
 	}
@@ -185,7 +185,7 @@ ISR(TIMER0_OVF_vect)
 
 ISR(TIMER0_COMP_vect)
 {
-    if(flag2 !=0)
+    if(flag02 !=0)
 	{
 	    (*CBCTC)();
     }

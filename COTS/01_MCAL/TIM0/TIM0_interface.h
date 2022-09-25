@@ -3,7 +3,8 @@
 #include "TYPES.h"
 
 
-#define TIM0_CLKOFF     0x01
+#define TIM0_CLK_OFF    0x00
+#define TIM0_CLK_1      0x01
 #define TIM0_CLK_8      0x02
 #define TIM0_CLK_64     0x03 
 #define TIM0_CLK_256    0x04
