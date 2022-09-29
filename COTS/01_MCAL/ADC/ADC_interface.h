@@ -16,7 +16,7 @@ typedef enum
     ADC_CHANNEL7 = 7
 } _enuADCChannelNum;
 
-// This Function Used to Init ADC
+// This Function Used to Initialize ADC
 void ADC_vidInit(_enuADCChannelNum enuADCChannelNum);
 
 // This Function to read a value from ADC

@@ -42,13 +42,13 @@
 
 
 // This Macro used to define the port number of Data Pins
-#define LCD_DATA_PORT       GPIOA
+#define LCD_DATA_PORT       GPIOD
 
 
 
 
 // This Macro used to define the port number of RS pin 
-#define LCD_RS_PORT         GPIOA
+#define LCD_RS_PORT         GPIOD
 // This Macro used to define the PIN number of RS
 #define LCD_RS_PIN          PIN5
 
@@ -57,17 +57,17 @@
 
 
 // This Macro used to define the port number of RW pin 
-#define LCD_RW_PORT         GPIOA
+#define LCD_RW_PORT         GPIOD
 // This Macro used to define the PIN number of RW
 #define LCD_RW_PIN          PIN2
 
 
 
 // This Macro used to define the port number of enable pin 
-#define LCD_EN_PORT         GPIOA
+#define LCD_EN_PORT         GPIOD
 // This Macro used to define the PIN number of Enable
 #define LCD_EN_PIN          PIN6
 
-
+#define LCD_REAL_NUMBER_DIGITS_AFTER_DOT 0
 
 #endif

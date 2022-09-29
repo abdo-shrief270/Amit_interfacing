@@ -170,8 +170,8 @@ void LCD_vidWriteRealNumber(float f32Num)
 	LCD_vidSendString(((f32Num<0)?"-":""));
 	float fNum=(f32Num<0)?-f32Num:f32Num;
 	LCD_vidSendNumber(fNum);
-	u32 num=(fNum*10000);
-	num %=10000;
+	u32 num=(fNum*(10)*LCD_REAL_NUMBER_DIGITS_AFTER_DOT);
+	num %=(10)*LCD_REAL_NUMBER_DIGITS_AFTER_DOT;
 	if(num>0){
 		LCD_vidSendString(".");
 		LCD_vidSendNumber(num);

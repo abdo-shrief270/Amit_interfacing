@@ -1,6 +1,6 @@
 #include "TYPES.h"
 #include "BIT_MATH.h"
-#include "DIO_interface.h"
+#include "ADC_interface.h"
 #include "LM35_interface.h"
 #include "LM35_private.h"
 #include "LM35_config.h"
@@ -11,11 +11,13 @@ void LM35_vidInit(_enuADCChannelNum enuChannelNum)
 }
 
 
-u8 LM35_vidLM35Read(void)
+u8 LM35_u8LM35Read(void)
 {
 
-    u8 temp;
-    temp = (ADC_u16Read()*ADC_Vref)/(10240);
-    return temp;
+    u16 temp;
+	u8 value;
+    temp = ADC_u16Read();
+ 	value = (temp*(float)ADC_Vref)/10240;
+    return value;
     
 }

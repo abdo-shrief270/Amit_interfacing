@@ -36,7 +36,7 @@
 
 // PINS of SFIOR
 
-#define ADTS1  5
+#define ADTS0  5
 #define ADTS1  6
 #define ADTS2  7
 

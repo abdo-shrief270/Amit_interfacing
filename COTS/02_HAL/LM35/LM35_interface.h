@@ -4,6 +4,6 @@
 #include "ADC_interface.h"
 
 void LM35_vidInit(_enuADCChannelNum enuChannelNum);
-u8 LM35_vidLM35Read(void);
+u8 LM35_u8LM35Read(void);
 
 #endif
